@@ -1,3 +1,7 @@
+/*
+  The below program creates a single linked list and performs specific operations
+  asked by the user.
+*/
 #include<stdio.h>
 #include<stdlib.h>
 

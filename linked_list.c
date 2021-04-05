@@ -132,6 +132,41 @@ struct node *add_at_beg(struct node *head)
   return head;
 }
 
+struct node *add_at_pos(int max_no_nodes,struct node *head)
+{
+  /*
+  Purpose : this function adds a node at a position specified by the user.
+  Inputs : head - Pointer
+          points to the linked list which has to be modified.
+  Output : head - Pointer
+          points to the linked list after modification.
+  */
+  struct node *temp = malloc(sizeof(struct node));
+  struct node *ptr = NULL;
+  int pos;
+
+  here:
+  printf("Enter a position less than or equal%d\n",max_no_nodes);
+  scanf("%d",&pos);
+  if(pos > max_no_nodes)
+  {
+    goto here;
+  }
+  printf("Enter the data in the node\n");
+  scanf("%d",&(temp->data));
+
+  ptr = head;
+
+  for(int i = 0; i < pos - 2; i++)
+  {
+    ptr = ptr->link;
+  }
+  temp->link = ptr->link;
+  ptr->link = temp;
+
+  return head;
+}
+
 int main()
 {
 
@@ -154,12 +189,14 @@ int main()
 
   printf("Select operations you want to perform on Linked list:\n");
   printf("[1] Insert node at END\n[2] Insert node at Beginning\n[3] Display linked list\n");
+  printf("[4] Insert node at a Position\n");
 
   printf("-------------------\n");
   scanf("%d", &ops);
   printf("-------------------\n");
   printf("******* Chosen Operation ******\n");
 
+  print(head);
 // Below switch statement executes the particular operation
 // as chosen by the user.
   switch (ops) {
@@ -178,7 +215,11 @@ int main()
     case 3: printf("Display the linked list\n");
             print(head);
             break;
-
+    case 4 : printf("Insert node at a position\n");
+             head = add_at_pos(no_nodes,head);
+             printf("Node inserted at the specified position.\n");
+             print(head);
+             break;
     default: printf("Please choose available operations.\n");
   }
 

@@ -62,18 +62,25 @@ void print(struct node *head)
   Outputs : head - Pointer
             head pointer which points to the modified linked list.
   */
-  struct node *ptr = NULL;
-
-  printf("The data in the linked list is as follows\n");
-  printf("###################################\n");
-  ptr = head;
-  while(ptr != NULL)
+  if(head == NULL)
   {
-  printf("%d->",ptr->data);
-  ptr = ptr->link;
+    printf("Nothing to display.\n");
   }
-  printf("\n");
-  printf("###################################\n");
+  else
+  {
+    struct node *ptr = NULL;
+
+    printf("The data in the linked list is as follows\n");
+    printf("###################################\n");
+    ptr = head;
+    while(ptr != NULL)
+    {
+    printf("%d->",ptr->data);
+    ptr = ptr->link;
+    }
+    printf("\n");
+    printf("###################################\n");
+  }
 }
 
 struct node *add_at_end(struct node *head)
@@ -132,7 +139,7 @@ struct node *add_at_beg(struct node *head)
   return head;
 }
 
-struct node *add_at_pos(int max_no_nodes,struct node *head)
+struct node *add_at_pos(int max_no_nodes, struct node *head)
 {
   /*
   Purpose : this function adds a node at a position specified by the user.
@@ -167,6 +174,30 @@ struct node *add_at_pos(int max_no_nodes,struct node *head)
   return head;
 }
 
+struct node *del_node_beg(struct node *head)
+{
+  /*
+  Purpose : This function deletes a node at the beginning of the linked list.
+  Input : head - Pointer
+         pointer that points to the linked list that has to be modified.
+  Output : head - Pointer
+        pointer that points to the modified linked list.
+  */
+  if(head == NULL)
+  {
+    printf("List is empty.\n");
+  }
+  else
+  {
+    struct node *temp = malloc(sizeof(struct node));
+    temp = head;
+    head = temp->link;
+    free(temp);
+    temp = NULL;
+  }
+
+  return head;
+}
 int main()
 {
 
@@ -184,19 +215,20 @@ int main()
 
   head = create_Linked_list(no_nodes, head);
 
+  print(head);
 
 // Prompts the user to choose an operation to perform on the linked list
 
   printf("Select operations you want to perform on Linked list:\n");
   printf("[1] Insert node at END\n[2] Insert node at Beginning\n[3] Display linked list\n");
-  printf("[4] Insert node at a Position\n");
+  printf("[4] Insert node at a Position\n[5] Delete node at Beginning\n");
 
   printf("-------------------\n");
   scanf("%d", &ops);
   printf("-------------------\n");
   printf("******* Chosen Operation ******\n");
 
-  print(head);
+
 // Below switch statement executes the particular operation
 // as chosen by the user.
   switch (ops) {
@@ -218,6 +250,11 @@ int main()
     case 4 : printf("Insert node at a position\n");
              head = add_at_pos(no_nodes,head);
              printf("Node inserted at the specified position.\n");
+             print(head);
+             break;
+    case 5 : printf("Delete node at beginning.\n");
+             head = del_node_beg(head);
+             printf("Node delected succesfully.\n");
              print(head);
              break;
     default: printf("Please choose available operations.\n");

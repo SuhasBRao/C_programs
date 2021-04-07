@@ -198,6 +198,33 @@ struct node *del_node_beg(struct node *head)
 
   return head;
 }
+
+struct node *del_node_end(struct node *head)
+{
+
+  if(head == NULL)
+  {
+    printf("List is empty\n");
+  }
+  else
+  {
+    struct node *temp = malloc(sizeof(struct node));
+    struct node *temp2 = malloc(sizeof(struct node));
+    temp = head;
+    temp2 = head;
+    while(temp->link != NULL)
+    {
+      temp2 = temp;
+      temp = temp->link;
+    }
+    // now the temp pointer is pointing to the last but one node.
+    //temp2 pointer ponints to the last node.
+    temp2->link = NULL;
+    free(temp);
+    temp = NULL;
+  }
+  return head;
+}
 int main()
 {
 
@@ -222,6 +249,7 @@ int main()
   printf("Select operations you want to perform on Linked list:\n");
   printf("[1] Insert node at END\n[2] Insert node at Beginning\n[3] Display linked list\n");
   printf("[4] Insert node at a Position\n[5] Delete node at Beginning\n");
+  printf("[6] Delete node at last(select this if no of nodes is more than one)\n");
 
   printf("-------------------\n");
   scanf("%d", &ops);
@@ -257,6 +285,12 @@ int main()
              printf("Node delected succesfully.\n");
              print(head);
              break;
+    case 6 : printf("Delete node at End\n");
+             head = del_node_end(head);
+             printf("Node deleted succesfully\n");
+             print(head);
+             break;
+
     default: printf("Please choose available operations.\n");
   }
 

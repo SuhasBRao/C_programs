@@ -7,6 +7,8 @@
 2.README.md - 
   This file contains a brief description about this repository.
 
-
 3.linked_list.c -
-  This c file implements linked list data structure in c language. It also allows the user to perform some operations on the linked list. Operations linke Insertion of node at beginning, insertion of node at end, insertion of node at specified position, Displaying the contents of the list, Deleting the node at the beginning etc can be performed.
+  This c file implements linked list data structure in c language. It also allows the user to perform some operations on the linked list.
+
+4.string_palindrome.c - 
+  This c file checks whether a given string is a palindrome or not.

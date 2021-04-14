@@ -8,9 +8,9 @@ int main()
     int n,len;
     char arr[50], dup[20];
     gets(arr); //or scanf("%[^\n%*c",str)
-    strcpy(dup,arr);
+    strcpy(dup,arr);    //copies original arr string to dup string
 
-    if(strcmp(strrev(arr),dup) == 0)
+    if(strcmp(strrev(arr),dup) == 0)    // this line compares reversed string and original str
     {
         printf("%s is a palindrome",dup);
     }

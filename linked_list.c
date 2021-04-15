@@ -201,6 +201,13 @@ struct node *del_node_beg(struct node *head)
 
 struct node *del_node_end(struct node *head)
 {
+   /*
+  Purpose : This function deletes a node at the end of the linked list.
+  Input : head - Pointer
+         pointer that points to the linked list that has to be modified.
+  Output : head - Pointer
+        pointer that points to the modified linked list.
+  */
 
   if(head == NULL)
   {
@@ -218,13 +225,37 @@ struct node *del_node_end(struct node *head)
       temp = temp->link;
     }
     // now the temp pointer is pointing to the last but one node.
-    //temp2 pointer ponints to the last node.
+    //temp2 pointer ponints to the last  node.
     temp2->link = NULL;
     free(temp);
     temp = NULL;
   }
   return head;
 }
+
+struct node *reverse_list(struct node *head)
+{
+   /*
+  Purpose : This function reverses the given linked list.
+  Input : head - Pointer
+         pointer that points to the linked list that has to be modified.
+  Output : head - Pointer
+        pointer that points to the modified linked list.
+  */
+  struct node *current,*prev,*next;
+  current = head;
+  prev = NULL;
+  while(current != NULL)
+  {
+    next = current->link;
+    current->link = prev;
+    prev = current; 
+    current = next;
+  }
+  head = prev;
+  return head;
+}
+
 int main()
 {
 
@@ -250,6 +281,7 @@ int main()
   printf("[1] Insert node at END\n[2] Insert node at Beginning\n[3] Display linked list\n");
   printf("[4] Insert node at a Position\n[5] Delete node at Beginning\n");
   printf("[6] Delete node at last(select this if no of nodes is more than one)\n");
+  printf("[7] Reverse the list.\n");
 
   printf("-------------------\n");
   scanf("%d", &ops);
@@ -288,6 +320,11 @@ int main()
     case 6 : printf("Delete node at End\n");
              head = del_node_end(head);
              printf("Node deleted succesfully\n");
+             print(head);
+             break;
+    case 7 : printf("Reverse the list\n");
+             head = reverse_list(head);
+             printf("The list is reversed\n");
              print(head);
              break;
 

@@ -64,13 +64,13 @@ struct node *add_at_beg(struct node *head)
 
 int display(struct node *head)
 {  
-   struct node *ptr;
-   ptr = head;
-   while(ptr != NULL)
-   {
-       printf("%d->",ptr->data);
-       ptr = ptr->next;
-   }
+    struct node *ptr;
+    ptr = head;
+    while(ptr != NULL)
+    {
+        printf("%d->",ptr->data);
+        ptr = ptr->next;
+    }
     printf("\n");
     return 0;
 
@@ -88,6 +88,6 @@ int main()
    head = add_at_beg(head);
    printf("Added at beginning\n");
    display(head);
-
+   
    return 0;
 }

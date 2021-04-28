@@ -15,3 +15,6 @@
 
 5.string_palindrome_recursive.c - 
   This c file checks for palindrome using recursion.
+
+6.Doubly_linked_list.c - 
+  This c file creates doubly linked list and performs some operations.

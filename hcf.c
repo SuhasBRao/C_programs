@@ -13,10 +13,10 @@ int main(){
 int hcf(int a,int b){
     int small = a>b?b:a;
     int big = a>b?a:b;
-    int rem = big%small;
+    int rem = big % small;
     if (rem == 0){
         return small;
     }else{
-        return hcf(big,small);
+        return hcf(small, rem);
     }
 }

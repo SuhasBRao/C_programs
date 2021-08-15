@@ -1,5 +1,5 @@
 //level order traversal without using queue
-
+// trying still
 #include<stdio.h>
 #include<stdlib.h>
 struct treeNode
@@ -64,8 +64,9 @@ void levelOrder(struct treeNode *root, int n){
             i+=1; 
         }
         //printf("%d ",i);
-        arr[i] = cur->left;
-        arr[i+1]= cur->right;
+        if (cur->left) {arr[i] = cur->left; i+=1;}
+            
+        if (cur->right) {arr[i]= cur->right;}
 
         printf("%d ",cur->data);
         
@@ -92,9 +93,10 @@ int main(){
     struct treeNode *root = NULL;
     n = 2;
     //root = addNode(root, 5);
+    root  = addNode(root, 3);
     root = addNode(root,2);
     root  = addNode(root, 7);
-    //root  = addNode(root, 3);
+    
     //root  = addNode(root, 6);
 
     preOrder(root); 
